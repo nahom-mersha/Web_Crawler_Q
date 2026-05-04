@@ -2,7 +2,6 @@ import threading
 import time
 import logging
 
-from crawler import fetch_website, URLS ##Will get function fetch_website from CRAWLER part
 from parser import PARSERS
 from storage import (load_previous_storage, update_storage, compare_data)
 FILE_NAME = "headlines.json"
@@ -17,7 +16,6 @@ def function_sumthing(site_name, url):
 
         headlines = parser_function(html)
 
-        current_data[site_name] = headlines
 
         logging.info(
             f"{site_name}: Parsed {len(headlines)} headlines")
@@ -46,13 +44,13 @@ def main():
         URLS.keys())
 
 
-for site_name, url in URLS.items():
+# for site_name, url in URLS.items():
 
-        thread = threading.Thread(
-            target=crawl_site,
-            args=(site_name, url))
+#         thread = threading.Thread(
+#             target=crawl_site,
+#             args=(site_name, url))
         
-for thread in threads:
-    thread.join()
-    thread.start()
+# for thread in threads:
+#     thread.join()
+#     thread.start()
 
